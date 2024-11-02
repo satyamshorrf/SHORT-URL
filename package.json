@@ -1,19 +1,19 @@
 {
-  "name": "short-url",
+  "name": "rajeshurl",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js"
   },
-  "author": "Satyam Shorrf",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "ejs": "^3.1.10",
+    "ex": "^0.1.4",
     "express": "^4.21.1",
-    "mongoose": "^8.7.3",
+    "mongoose": "^8.8.0",
     "nanoid": "^5.0.8",
-    "nodemon": "^3.1.7",
     "shortid": "^2.2.16"
   }
 }
