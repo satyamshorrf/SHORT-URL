@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        table, 
+        th, 
+        td {
+            border: 1px solid black;
+            border-collapse: collapse; /* Added to collapse borders */
+            padding: 8px; /* Added padding for better readability */
+        }
+        
+        th {
+            background-color: #f2f2f2; /* Optional: Improve table header readability */
+        }
+    </style>
+</head>
+
+<body>
+    <h1>URL Shortener</h1>
+    
+    <% if (locals.id) { %>
+        <p>URL Generated: <a href="http://localhost:8001/url<%= locals.id %>">http://localhost:8001/url<%= id %></a></p>
+    <% } %>
+    
+    <div>
+        <form method="POST" action="/url">
+            <label for="url">Enter Your Original URL</label>
+            <input type="text" name="url" id="url" placeholder="https://example.com" required>
+            <button type="submit">Generate</button>
+        </form>
+    </div>
+
+    <div>
+        <% if (locals.urls) { %>
+            <table>
+                <thead>
+                    <tr>
+                        <th>S.R No</th>
+                        <th>ShortID</th>
+                        <th>Redirect</th>
+                        <th>Clicks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% urls.forEach((url, index) => { %>
+                        <tr>
+                            <td><%= index + 1 %></td>
+                            <td><%= url.shortId %></td>
+                            <td><a href="<%= url.redirectURL %>"><%= url.redirectURL %></a></td> <!-- Make redirect URL clickable -->
+                            <td><%= url.visitHistory.length %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p>No URLs generated yet.</p>
+        <% } %>
+    </div>
+
+</body>
+
+</html>
